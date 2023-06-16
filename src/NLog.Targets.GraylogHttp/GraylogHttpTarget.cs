@@ -204,7 +204,7 @@ namespace NLog.Targets.GraylogHttp
             {
                 try
                 {
-                    var factoryInstance = ConfigurationItemFactory.Default.CreateInstance(typeof(System.Net.Http.IHttpClientFactory));
+                    var factoryInstance = ResolveService<IHttpClientFactory>();
                     if (factoryInstance is IHttpClientFactory factory)
                         _httpClient = HttpClientName == null ? factory.CreateClient() : factory.CreateClient(HttpClientName);
                 }
